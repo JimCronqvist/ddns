@@ -41,7 +41,6 @@ check_env_vars DDNS_URL USERNAME PASSWORD HOSTNAME
 MYIP_URL="${MYIP_URL:-https://ipecho.net/plain}"
 INTERVAL=${INTERVAL:-5}
 USER_AGENT="curl docker-ddns/1.0 ${EMAIL}"
-URL="$DDNS_URL"
 
 # Ensure the provided interval is a valid integer
 if [[ $INTERVAL != [0-9]* ]]; then
@@ -69,7 +68,7 @@ while true; do
     if [[ "$IP" != "$LAST_IP" ]]; then
 
         PARAMS="hostname=${HOSTNAME}&myip=${IP}"
-        URL="$(replace_placeholders $URL)"
+        URL="$(replace_placeholders $DDNS_URL)"
 
         log ""
         log "New IP detected, updating record."

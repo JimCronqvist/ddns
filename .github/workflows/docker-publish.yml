@@ -8,8 +8,9 @@ on:
     # Publish semver tags as releases.
     tags: [ 'v?*.*.*' ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
   workflow_dispatch:
+  workflow_call:
 
 env:
   # Use docker.io for Docker Hub if empty
